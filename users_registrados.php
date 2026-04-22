@@ -18,11 +18,11 @@
 </head>
 </head>
 <body>
+    <header>
+        <img src="img/logo mejorado 1.png" class="logo" alt="Logo CTPMN">
+        <a href="inicio_especial.html" class="inicio">Inicio</a>
+    </header>
 
-  <header>
-      <img src="img/logo mejorado 1.png" class="logo" alt="Logo CTPMN">
-      
-  </header>
 
   <main>
     <h1>Usuarios Registrados</h1>

@@ -38,16 +38,31 @@
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Resolucion Permiso de ' . $tipo_permiso;
+    $mail->Subject = 'Resolucion Permiso/Justificacion solicitada';
     $mail->Body    = $text_default . " " . $resolution . "<br><br>Observaciones: " . $observaciones;
 
     $mail->send();
     $connection = Connect_DB();
     if($tipo_permiso == "omision"){
-        $sql = "DELETE FROM omision WHERE cedula = ?";
+        $sql = "DELETE FROM omision WHERE id = ?";
     }
     else if ($tipo_permiso == "solicitud_salida"){
-        $sql = "DELETE FROM solicitud_salida WHERE cedula = ?";
+        $sql = "DELETE FROM solicitud_salida WHERE id = ?";
+    }
+    else if ($tipo_permiso == "justificacion_salida"){
+        $sql = "DELETE FROM justificacion_salida WHERE id = ?";
+    }
+    else if ($tipo_permiso == "solicitud_ausencia"){
+        $sql = "DELETE FROM solicitud_ausencia WHERE id = ?";
+    }
+    else if ($tipo_permiso == "justificacion_ausencia"){
+        $sql = "DELETE FROM justificacion_ausencia WHERE id = ?";
+    }
+    else if ($tipo_permiso == "justificacion_tardia"){
+        $sql = "DELETE FROM justificacion_tardias WHERE id = ?";
+    }
+    else if ($tipo_permiso == "maternidad"){
+        $sql = "DELETE FROM maternidad WHERE id = ?";
     }
     $stmt = $connection->prepare($sql);
     $stmt->bind_param("s", $_SESSION["user_id"]);
@@ -58,4 +73,4 @@
     } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
-?>
+?>  

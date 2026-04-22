@@ -1,0 +1,171 @@
+create table usuarios (
+	id int auto_increment primary key,
+    email varchar(255) not null,
+    contrasena varchar(255) not null default "Ctpmn*",
+    nombre varchar(255) not null,
+    rol enum('admin','profesor') not null,
+    cedula varchar(255) not null default "101230456",
+    grupo_profesional varchar(255) not null,
+    puesto varchar(255) not null,
+    condicion varchar(255) not null
+);
+ 
+create table omision (
+	id int auto_increment primary key,
+    nombre varchar(255) not null,
+	rol enum('admin','profesor') not null,
+	instancia enum('Personal docente','Titulo II','Personal administrativo','Titulo I'),
+    /*estado enum('pendiente', 'aprobado', 'rechazado') not null default 'pendiente',*/
+    fecha_evento date not null,
+    entrada time not null,
+    salida time not null,
+    justificacion varchar(255),
+    resolucion enum('Aceptar lo solicitado','Denegar lo solicitado','Acoger convocatoria'),
+    motivo_resolucion varchar(255)
+);
+ 
+create table solicitud_salida (
+	id int auto_increment primary key,
+    nombre varchar(255) not null,
+    cedula varchar(255) not null,
+	rol enum('admin','profesor') not null,
+    condicion enum('propietario','interino'),
+    grupo_profesional varchar(255),
+    fecha date,
+    fecha_evento date,
+    hora_inicio time not null,
+    hora_fin time not null,
+    total_lecciones int not null,
+    jornada enum('mañana','tarde'),
+    motivo varchar(255) not null,
+    observaciones varchar(255) not null,
+    tipo_firma text,
+    nombre_firma varchar(255),
+    firma longblob,
+    fecha_presentado time
+);
+ 
+ create table solicitud_ausencia (
+	id int auto_increment primary key,
+    nombre varchar(255) not null,
+    cedula varchar(255) not null,
+    rol enum('admin','profesor'),
+    condicion enum('propietario','interino'),
+    grupo_profesional varchar(255),
+    fecha date,
+    fecha_evento date,
+    hora_estimada time,
+    motivo varchar(255),
+    observaciones varchar(255) not null,
+    tipo_firma text,
+    firma longblob,
+    nombre_firma varchar(255),
+    comprobante longblob,
+    tipo_comprobante text,
+    nombre_comprobante varchar(255),
+    fecha_presentado time
+ );
+ 
+create table justificacion_ausencia (
+	id int auto_increment primary key,
+    nombre varchar(255) not null,
+    cedula varchar(255) not null,
+	rol varchar(255) not null,
+    condicion enum('propietario','interino'),
+    grupo_profesional varchar(255),
+    fecha date,
+    fecha_evento date,
+    hora_inicio time not null,
+    hora_fin time not null,
+    total_lecciones int not null,
+    motivo varchar(255) not null,
+    observaciones varchar(255) not null,
+    tipo_firma text,
+    nombre_firma varchar(255),
+    firma longblob,
+    fecha_presentado time
+);
+
+create table justificiacion_tardias (
+	id int auto_increment primary key,
+    nombre varchar(255) not null,
+    cedula varchar(255) not null,
+	rol enum('admin','profesor') not null,
+    condicion enum('propietario','interino'),
+    grupo_profesional varchar(255),
+    fecha date,
+    hora_entrada date,
+    hora_llegada date,
+    observaciones varchar(255),
+	firma longblob,
+    tipo_firma text,
+    nombre_firma varchar(255),
+    fecha_presentado time
+);
+
+create table incapacidad (
+	id int auto_increment primary key,
+    nombre varchar(255) not null,
+    cedula varchar(255) not null,
+	rol enum('admin','profesor') not null,
+    condicion enum('propietario','interino'),
+    grupo_profesional varchar(255),
+    fecha_inicio date,
+    fecha_fin date,
+    comprobante longblob,
+    tipo_comprobante text,
+    nombre_comprobante varchar(255),
+    observaciones varchar(255),
+    firma longblob,
+    tipo_firma text,
+    nombre_firma varchar(255),
+    fecha_presentado time
+);
+
+create table licencia_con_goce (
+	id int auto_increment primary key,
+    nombre varchar(255) not null,
+    cedula varchar(255) not null,
+    telefono varchar(255) not null,
+    correo_personal varchar(255) not null,
+    correo_brete varchar(255) not null,
+    condicion enum('propietario','interino','ascenso interino', 'descenso interino', 'traslado'),
+    lugar_tabajo varchar(255) not null,
+    direccion_regional enum('heredia'),
+    centro_educativo enum('C.T.P. Mercedes Norte'),
+    clase_puesto enum('orientador','cocinero','profesor enseñanza tecnica profesional','profesor enseñanza media', 'conserje de centro educativo'),
+    motivo enum('capacitarse en el uso de un animal de asistencia','autorizada por jefatura inmediata','cuidados especiales de familiares','docentes con enfermedad comprobada','invitaciones del gobierno/organismos internacionales','maternidad por adopcion','paternidad por adopcion','paternidad por nacimiento','representacion deportiva','levantamiento de licencia Art. 64','levantamiento de licencia Art. 175','levantamiento de licencia Ley N°7800'),
+    fecha_inicio date,
+    fecha_fin date
+);
+    
+create table licencia_sin_goce (
+	id int auto_increment primary key,
+    nombre varchar(255) not null,
+    cedula varchar(255) not null,
+    telefono varchar(255) not null,
+    correo_institucional varchar(255) not null,
+    correo_brete varchar(255) not null,
+    condicion enum('propietario','interino','ascenso interino', 'descenso interino', 'traslado'),
+    lugar_tabajo varchar(255) not null,
+    direccion_regional enum('heredia'),
+    centro_educativo enum('C.T.P. Mercedes Norte'),
+    clase_puesto enum('orientador','cocinero','profesor ensenanza tecnica profesional','profesor ensenanza media', 'conserje de centro educativo'),
+    motivo enum('Art 172, menor a 7 dias naturales','Art 36, menor a 8 dias naturales','por motivos personales del servidor (propietarios)','por motivos personales del servidor (interinos)','por asuntos de salud de familia','por estudios','proyectos sector publico','nombramiento en sindicato','cargos fuera del pais','beca de conyugue fuera del pais','nombramiento interino en otra institucion','levantamiento de permiso sin goce'),
+    fecha_inicio date,
+    fecha_fin date,
+    /*Motivo Jefatura*/
+    opcion enum('fallecimiento de un familiar','matrimonio','fuerza mayor o caso fortuito','por fallecimientos de abuelos'),
+    /*Motivo cuidados especiales familiares*/
+    parentesco enum('padre','madre','hijo/a','conyugue','compañero/a'),
+    nombre_paciente varchar(255),
+    cedula_paciente varchar(255)
+);
+
+use bd_ctpmn;
+
+select * from usuarios
+
+INSERT INTO usuarios (email, contrasena, nombre, rol, cedula, grupo_profesional, puesto, condicion)
+VALUES ('laura2012@gmail.com', 'laura2012', 'laura', 'admin', 213213213, 'mt6', 'pene', 'todas');
+

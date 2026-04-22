@@ -3,15 +3,15 @@
     require_once "db.php";
 
 
-    $email = $_POST["email"];
+    $cedula = $_POST["cedula"];
     $pass = $_POST["pass"];
     $rol = $_POST["rol"];
 
 
     $connection = Connect_DB();
-    $sql = "SELECT nombre, cedula, rol, grupo_profesional FROM usuarios WHERE contrasena = ? AND email = ? AND rol = ?";
+    $sql = "SELECT nombre, cedula, rol, grupo_profesional FROM usuarios WHERE contrasena = ? AND cedula = ? AND rol = ?";
     $stmt = $connection->prepare($sql);
-    $stmt->bind_param("sss", $pass, $email, $rol);
+    $stmt->bind_param("sss", $pass, $cedula, $rol);
     $stmt->execute();
     $result = $stmt->get_result();
     if ($result->num_rows === 1) {

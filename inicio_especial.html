@@ -5,11 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio - CTPMN</title>
     <link rel="stylesheet" href="css/inicio_especial.css">
+    <link rel="icon" href="/img/favicon.ico">
+
+    <style>
+        .circle {
+            width: 25px;
+            height: 25px;
+            background-color: #840709;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            transform: translateX(290px) translateY(-15px);
+            /* Centrar el texto dentro del círculo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .circle-stat {
+            display: none;
+        }
+
+        /* Animación cuando cambia el número */
+        @keyframes badge-pulse {
+            0%, 100% {
+                transform: translateX(290px) translateY(-15px) scale(1);
+            }
+            50% {
+                transform: translateX(290px) translateY(-15px) scale(1.2);
+            }
+        }
+
+        .circle.actualizado {
+            animation: badge-pulse 0.5s ease;
+        }
+    </style>
+
 </head>
 <body>
 
     <header>
         <img src="img/logo mejorado 1.png" class="logo" alt="Logo CTPMN">
+        <a class="header-a" href="change.html">Cambiar Contraseña</a>
     </header>
 
     <div class="bienvenida">
@@ -20,6 +60,8 @@
     <main>
         <section class="inicio-container">
             <div class="columna">
+                <!-- El círculo ahora mostrará el número automáticamente -->
+                <div class="circle" id="circle_1">0</div>
                 <h2>Revisión de formularios</h2>
                 <a href="revision_forms.php" class="btn">Ingresar</a>
             </div>    
@@ -29,16 +71,65 @@
             </div>
             <div class="columna">
                 <h2>Creación de usuarios</h2>
-                <a href="crear_cuenta.html" class="btn">Ingresar</a>
+                <a href="register.html" class="btn">Ingresar</a>
             </div>
         </section>
-
-
     </main>
+
     <footer>
         <p>Heredia, Mercedes Norte, 400 mts, norte de la Iglesia Católica de Mercedes</p>
         <p>TEL: 22605090 // 22617445</p>
         <p>Correo: ctp.mercedes.norte@mep.go.cr</p>
     </footer>
+
+    <script>
+        let cantidadAnterior = 0;
+
+        async function actualizarBadge() {
+            const circle = document.getElementById('circle_1');
+            
+            try {
+                const response = await fetch('ajax_contador.php');
+                const data = await response.json();
+                
+                if (data.error) {
+                    console.error('Error:', data.error);
+                    circle.textContent = '!';
+                    circle.style.backgroundColor = '#ffc107'; // Amarillo para error
+                } else {
+                    // Actualizar el número
+                    circle.textContent = data.cantidad;
+                    
+                    // Si el número cambió, hacer animación
+                    if (data.cantidad !== cantidadAnterior) {
+                        circle.classList.add('actualizado');
+                        setTimeout(() => {
+                            circle.classList.remove('actualizado');
+                        }, 500);
+                    }
+                    
+                    // Si hay elementos nuevos, mantener el color rojo
+                    if (data.cantidad > 0) {
+                        circle.style.backgroundColor = '#840709';
+                    }
+                    
+                    cantidadAnterior = data.cantidad;
+                }
+                
+            } catch (error) {
+                console.error('Error al actualizar badge:', error);
+                circle.textContent = '?';
+                circle.style.backgroundColor = '#6c757d'; // Gris para error de conexión
+            }
+        }
+        
+        // Actualizar al cargar la página
+        actualizarBadge();
+        
+        // Actualizar cada 15 segundos
+        setInterval(actualizarBadge, 15000);
+        
+        console.log('Sistema de notificaciones iniciado');
+    </script>
 </body>
 </html>

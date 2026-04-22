@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="icon" href="/img/favicon.ico">
 </head>
 <body>
     <?php 
@@ -35,7 +36,7 @@
         $stmt = $connection->prepare($sql);
         $stmt->bind_param("sssissss", $email,$pass, $name, $id, $prof_group, $job, $condition, $rol );
         if ($stmt->execute()) {
-            echo "\nUsuario registrado correctamente.";
+            header("Location: usuario-registrado.html");
         } else {
             echo "Error al registrar: " . $stmt->error;
         }

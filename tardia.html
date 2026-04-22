@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Justificación</title>
+    <link rel="stylesheet" href="css/tardia.css">
+    <link rel="icon" href="/img/favicon.ico">
+    </head>
+<body>
+    <header>
+        <img src="img/logo mejorado 1.png" class="logo" alt="Logo CTPMN">
+        <a href="inicio.php" class="inicio">INICIO</a>
+    </header>
+    
+    <form class="all" action="procesar_permiso.php" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="tipo_permiso" value="justificacion_tardia">
+        <section class="first">
+            <h1>Formulario de Justificación de Llegada Tardía</h1>
+            <hr>
+            <div class="general">
+                <p>Quien elabora en la institución educativa CTP Mercedes Norte, con las siguientes condiciones:</p>
+                <div>
+                    <div class="space">
+                        <label>Nombre Completo: </label>
+                        <input type="text" class="fill" name="name">
+                    </div>
+                    <div class="space space-inline">
+                        <div>
+                            <label>Puesto Laboral: </label>
+                            <input type="text" class="fill-small" name="job_position">
+                        </div>
+                        <div>
+                            <label>Cédula: </label>
+                            <input type="text" class="fill-small" name="id_num">
+                        </div>
+                    </div>
+                    <div class="checkbox checkbox-inline">
+                        <label>En condición: </label>
+                        <div class="radio-group">
+                            <input type="radio" id="condicion_propietario" name="condition" value="propietario">
+                            <label for="condicion_propietario">Propietario</label>
+                            <input type="radio" id="condicion_interino" name="condition" value="interino">
+                            <label for="condicion_interino">Interino</label>
+                        </div>
+                    </div>
+                    <div class="space">
+                        <label>Grupo Profesional: </label>
+                        <input type="text" class="fill-small" name="proffesional_group">
+                    </div>
+                    <div class="space">
+                        <label>De la fecha: </label>
+                        <input type="date" class="fill-small" name="form_date">
+                    </div>
+                    <div class="space">
+                        <label>Hora de entrada: </label>
+                        <input type="time" class="fill-small" name="enter_time">
+                    </div>
+                    <div class="space">
+                        <label>Hora de llegada: </label>
+                        <input type="time" class="fill-small" name="arrive_time">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="thrid">
+            <div>
+                <label>Observaciones</label>
+                <input type="text" class="fill" name="observations">
+            </div>
+            <div>
+                <label for="firma">Firma del/la funcionario (a):</label>
+                <input type="file" name="firma" id="firma" accept=".pdf, .jpg, .png" class="firma" >
+            </div>
+            <br>
+            <div>
+                <label for="firma">Comprobante de la justificacion si es necesario:</label>
+                <input type="file" name="comprobante" id="comprobante" accept=".pdf, .jpg, .png" >
+            </div>
+            <br>
+            <p>Importante: Todo permiso de ausencia laboral está sujeto a cumplimiento de requisitos y copia adjunta de documento pertinente de cita, convocatoria o licencia,
+                de ser posible con tres días de anticipación. Posterior a la ausencia_y/o tardia, _el funcionario debe hacer entrega del comprobante pertinente de
+                justificacion de asistencia en el plazo no mayor de 48 (cuarenta y ocho horas). Las licencias dependen de requisitos previos para su goce. De no presentar
+                el comprobante se tramitará lo que corresponda.</p>
+        </section>
+        <button type="submit">Enviar Todo</button>
+    </form>
+    <footer>
+        <p>Heredia, Mercedes Norte, 400m norte de la Iglesia Católica</p>
+        <p>TEL: 22605090 // 22617445</p>
+        <p>Correo: ctp.mercedes.norte@mep.go.cr</p>
+    </footer>
+</body>
+</html>

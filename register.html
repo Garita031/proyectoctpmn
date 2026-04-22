@@ -3,36 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <link rel="stylesheet" href="css/register.css">
+    <title>Login - CTP Mercedes Norte</title>
 </head>
-<body>
-    <h1>Register</h1>
-    <form action="register.php" method="post">
-        <label for="email">Email</label>
-        <input type="email" name="email">
-        <label for="nombre">Password</label>
-        <input type="password" name="pass">
-        <label for="nombre">Nombre</label>
-        <input type="text" name="nombre">
-        <label for="nombre">Cedula</label>
-        <input type="text" name="id">
-        <label for="nombre">Rol</label>
-        <select id="rol" name="rol" required>
-            <option value="" disabled selected hidden>Rol</option>
-            <option value="admin">Administrativo</option>
-            <option value="profesor">Profesor</option>
-        </select>
-        <label for="nombre">Grupo Profesional</label>
-        <input type="text" name="prof_group">
-        <label for="nombre">Puesto</label>
-        <input type="text" name="job">
-        <label for="nombre">Condicion</label>
-        <input type="text" name="condition">
-        <input type="submit" value="ENTRAR">
+<body class="body-login">
+ 
 
-    </form>
+<form action="register.php" method="post" enctype="multipart/form-data">
+    <div class="form">
+    <img src="img/logo.png" class="logo">
+    <h2>Registro</h2>
+    <div class="registrer">
+    <input type="email" class="user" placeholder="Email" name="email">
+    <br>
+    <br>
+    <input type="text" class="pass" placeholder="Contraseña" name="pass">
+    <br>
+    <br>
+    <input type="text" class="pass" placeholder="Nombre" name="nombre">
+    <br>
+    <br>
+    <input type="text" class="pass" placeholder="Cedula" name="id">
+    <br>
+    <br>
+    <input type="text" class="pass" placeholder="Grupo Profesional" name="prof_group">
+    <br>
+    <br>
+    <input type="text" class="pass" placeholder="Puesto" name="job">
+    <br>
+    <br>
+    <input type="text" class="pass" placeholder="Condicion" name="condition">
+    <br>
+    <br>
+    <select id="rol" name="rol">
+        <option name="rol" value="" disabled selected>Rol</option>
+        <option name="rol" value="admin">Administrativo</option>
+        <option name="rol" value="profesor">Profesor</option>
+    </select>
+    </div>
+    <button type="submit" class="ingresar">Registrarse</button>
+</div>
+ 
+</form>
 
-    <p>Ya tienes una cuenta?</p>
-    <a href="index.html">Iniciar Sesion</a>
 </body>
 </html>

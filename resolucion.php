@@ -1,6 +1,7 @@
 <?php 
     session_start();
     $cedula = $_POST["cedula"];
+    $id = $_POST["id"];
     require_once "db.php";
     $connection = Connect_DB();
     $correo = "";
@@ -13,7 +14,7 @@
         $correo = $element["email"];
     }
     $_SESSION["user_email"] = $correo;
-    $_SESSION["user_id"] = $cedula;
+    $_SESSION["user_id"] = $id;
     $_SESSION["tipo_permiso"] = $_POST["tipo_permiso"];
     $stmt->close();
     $connection->close();
@@ -26,6 +27,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resolución de Justificación Permiso</title>
     <link rel="stylesheet" href="css/resolucion.css">
+    <link rel="icon" href="/img/favicon.ico">
 </head>
  
 <body>

@@ -9,8 +9,20 @@ if (ob_get_length()) {
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
+    $permiso = $_GET['bd'];
+    if ($permiso == "solicitud_salida"){
+        $sql = "SELECT nombre_firma, tipo_firma, firma FROM solicitud_salida WHERE id = ?";
+    }
+    elseif ($permiso == "solicitud_ausencia"){
+        $sql = "SELECT nombre_firma, tipo_firma, firma FROM solicitud_ausencia WHERE id = ?";
+    }
+    elseif ($permiso == "justificacion_ausencia"){
+        $sql = "SELECT nombre_firma, tipo_firma, firma FROM justificacion_ausencia WHERE id = ?";
+    }
+    elseif ($permiso == "justificacion_tardia"){
+        $sql = "SELECT nombre_firma, tipo_firma, firma FROM justificacion_tardias WHERE id = ?";
+    }
 
-    $sql = "SELECT nombre_firma, tipo_firma, firma FROM solicitud_salida WHERE id = ?";
     $stmt = $connect->prepare($sql);
     $stmt->bind_param("i", $id);
     $stmt->execute();
@@ -49,6 +61,7 @@ $connect->close();
     <link rel="stylesheet" href="es">
     <title>Permiso de Salida</title>
     <link rel="stylesheet" href="css/salida.css">
+    <link rel="icon" href="/img/favicon.ico">
 </head>
 <body>
     

@@ -6,16 +6,16 @@
     <link rel="stylesheet" href="es">
     <title>Permiso de Salida</title>
     <link rel="stylesheet" href="css/salida.css">
+    <link rel="icon" href="/img/favicon.ico">
 </head>
 <body>
-    <header>          
-        <nav>
-            <a href="/Frontend - Profesores, Administrativo (No dirección)/Inicio/inicio.html" class="inicip">INICIO</a>
-            <img src="img/logo mejorado 1.png".png" class="logo">
-        </nav>
+    <header>
+        <img src="img/logo mejorado 1.png" class="logo" alt="Logo CTPMN">
+        <a href="inicio.php" class="inicio">INICIO</a>
     </header>
+    
     <form class="all" action="procesar_permiso.php" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="tipo_permiso" value="salida">
+        <input type="hidden" name="tipo_permiso" value="solicitud_salida">
         <section class="first">
             <h1>Formulario: Solicitud de Permiso de Salida</h1>
             <hr>
@@ -61,7 +61,7 @@
                     <div class="space space-inline">
                         <div class="space">
                             <label>Hora: desde las </label>
-                            <input type="text" class="fill-small" maxlength="10" name="exit_hour">
+                            <input type="time" class="fill-small" maxlength="10" name="exit_hour">
                         </div>
                         <div class="space">
                             <label> hasta las: </label>
@@ -113,7 +113,7 @@
             </div>
             <div>
                 <label>Presento la solicitud a las:
-                    <input type="time" name="hora_envio"> en el dia: <input type="date" id="fecha_envio" maxlength="20" name="fecha_envio"> del año 2025 en CTP Mercedes Norte.
+                    <input type="time" name="hora_envio">  en la fecha: <input type="date" id="fecha_envio" maxlength="20" name="fecha_envio"> en CTP Mercedes Norte.
             </div>
             <div>
                 <label for="firma">Firma del/la funcionario (a):</label>

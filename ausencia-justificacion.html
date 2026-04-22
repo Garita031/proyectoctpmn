@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud de Justificacion de Ausencia</title>
+    <link rel="stylesheet" href="css/ausencia.css">
+    <link rel="icon" href="/img/favicon.ico">
+</head>
+<body>
+    <header>
+        <img src="img/logo mejorado 1.png" class="logo" alt="Logo CTPMN">
+        <a href="inicio.php" class="inicio">INICIO</a>
+    </header>
+    
+    <form class="all" action="procesar_permiso.php" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="tipo_permiso" value="justificacion_ausencia">
+        <section class="first">
+            <h1>Formulario: Justificacion de Ausencia</h1>
+            <hr>
+            <div class="general">
+                <p>Quién elabora en la institución educativa CTP Mercedes Norte, con las siguientes condiciones:</p>
+                <div>
+                    <div class="space">
+                        <label>Nombre Completo: </label>
+                        <input type="text" class="fill" name="name">
+                    </div>
+                    <div class="space space-inline">
+                        <div>
+                            <label>Puesto Laboral: </label>
+                            <input type="text" class="fill-small" name="job_position">
+                        </div>
+                        <div>
+                            <label>Cédula: </label>
+                            <input type="text" class="fill-small id" name="cedula">
+                        </div>
+                    </div>
+                    <div class="checkbox checkbox-inline">
+                        <label>En condición: </label>
+                        <div class="radio-group">
+                            <input type="radio" id="condicion_propietario" name="condicion" value="Propietario">
+                            <label for="condicion_propietario">Propietario</label>
+                            <input type="radio" id="condicion_interino" name="condicion" value="Interino">
+                            <label for="condicion_interino">Interino</label>
+                        </div>
+                    </div>
+                    <div class="space">
+                        <label>Grupo Profesional: </label>
+                        <input type="text" class="fill-small" name="prof_group">
+                    </div>
+                    <div class="space">
+                        <label>Total de lecciones: </label>
+                        <input type="text" class="fill-small" name="lessons" >
+                    </div>
+                    <div class="space">
+                        <label>En la fecha: </label>
+                        <input type="date" class="fill-small" name="exit_date" id="date">
+                    </div>
+                    <div class="space space-inline">
+                        <div class="space">
+                            <label>Hora: desde las </label>
+                            <input type="time" class="fill-small" maxlength="10" name="hora_inicio">
+                        </div>
+                        <div class="space">
+                            <label> hasta las </label>
+                            <input type="time" class="fill-small" maxlength="10" name="hora_fin">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+ 
+        <section class="second">
+            <div class="tablas">
+                    <table class="tabla">
+                        <tr>
+                            <p class="motivo">Motivo:</p>
+                            <td>Cita Médica Personal</td>
+                            <td><input type="radio" name="motivo" value="Cita Medica Personal"></td>
+                        </tr>
+                        <tr>
+                            <td>Acompañamiento a cita médica de familiar directo</td>
+                            <td><input type="radio" name="motivo" value="Acompañamiento a cita medica familiar"></td>
+                        </tr>
+                        <tr>
+                            <td>Asistencia a Convocatoria</td>
+                            <div class="conv-container">
+                                <td class="checkbox-conv"><input type="radio" name="motivo" value="Asistencia a Convocatoria Regional">Regional</td>
+                                <td class="checkbox-conv"><input type="radio" name="motivo" value="Asistencia a Convocatoria Nacional">Nacional</td>
+                                <td class="checkbox-conv"><input type="radio" name="motivo" value="Asistencia a Convocatoria Circuital">Circuital</td>
+                                <td class="checkbox-conv"><input type="radio" name="motivo" value="Asistencia a Convocatoria Sindical">Sindical</td>
+                            </div >
+                        </tr>
+                    </table>
+                </div>
+        </section>
+       
+        <section class="thrid">
+            <div>
+                <label>Observaciones:</label>
+                <input type="text" name="observaciones">
+            </div>
+            <div>
+                <label>Presento la justificacion a las:
+                    <input type="time" name="hora_envio"> en la fecha: <input type="date" id="fecha_envio" maxlength="20" name="fecha_envio"> en CTP Mercedes Norte.
+            </div>
+            <div>
+                <label for="firma">Comprobante de la justificacion si es necesario:</label>
+                <input type="file" name="comprobante" id="comprobante" accept=".pdf, .jpg, .png" >
+            </div>
+            <div>
+                <label for="firma">Firma del/la funcionario (a):</label>
+                <input type="file" name="firma" id="firma" accept=".pdf, .jpg, .png" >
+            </div>
+            <br>
+            <p>Importante: Todo permiso de ausencia laboral está sujeto a cumplimiento de requisitos y copia adjunta de documento pertinente de cita, convocatoria o licencia,
+                de ser posible con tres días de anticipación. Posterior a la ausencia_y/o tardia, _el funcionario debe hacer entrega del comprobante pertinente de
+                justificacion de asistencia en el plazo no mayor de 48 (cuarenta y ocho horas). Las licencias dependen de requisitos previos para su goce. De no presentar
+                el comprobante se tramitará lo que corresponda.</p>
+        </section>
+        <button type="submit">Enviar Todo</button>
+    </form>
+    <footer>
+        <p>Heredia, Mercedes Norte, 400m norte de la Iglesia Católica</p>
+        <p>TEL: 22605090 // 22617445</p>
+        <p>Correo: ctp.mercedes.norte@mep.go.cr</p>
+    </footer>
+</body>
+</html>

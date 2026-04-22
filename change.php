@@ -20,8 +20,7 @@
         $stmt = $connection->prepare($sql);
         $stmt->bind_param("sss", $passnew, $email, $passact);
         if ($stmt->execute()) {
-            echo "Contraseña cambiada correctamente";
-            echo '<br> <a href="index.html">Regresar al login</a>';
+            header("Location: contra_cambiada.html");
         }
         else{
             echo "Error, de algo";

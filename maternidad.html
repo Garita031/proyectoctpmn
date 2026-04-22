@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Licencia de Maternidad</title>
+  <link rel="stylesheet" href="css/maternidad.css">
+  <link rel="icon" href="/img/favicon.ico">
+</head>
+<body>
+      <header>
+        <img src="img/logo mejorado 1.png" class="logo" alt="Logo CTPMN">
+        <a href="inicio.php" class="inicio">INICIO</a>
+      </header>
+ 
+  <main>
+    <section class="form-container">
+      <h1>Licencia de Maternidad</h1>
+ 
+      <h2>Datos generales</h2>
+      <br>  
+        <form class="" action="procesar_permiso.php" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="tipo_permiso" value="maternidad">
+                        <div class="form-group">
+                          <input name="name" type="text" class="fill" required placeholder="Nombre completo">
+                          <input name="id" type="tel" class="fill" required placeholder="Cedula de identidad">
+                        </div>
+ 
+      <p>Por favor adjunte el documento correspondiente:</p>
+ 
+      <label for="file-upload" ></label>
+      <input name="comprobante" id="file-upload" type="file" accept=".pdf, .jpg, .png" class="btn" />
+ 
+      <p id="file-name" class="archivo-nombre"></p>
+ 
+      <button id="btn-subir" type="submit" class="btn_subir">Enviar</button>
+      </form>
+    </section>
+</main>
+ 
+ 
+ 
+  <footer>
+    <p>Heredia, Mercedes Norte, 400m norte de la Iglesia Católica</p>
+    <p>TEL: 22605090 // 22617445</p>
+    <p>Correo: ctp.mercedes.norte@mep.go.cr</p>
+  </footer>
+ 
+    <script>
+    const fileInput = document.getElementById("file-upload");
+    const fileName = document.getElementById("file-name");
+    const btn_class = document.getElementById("btn-subir")
+ 
+    fileInput.addEventListener("change", () => {
+      if (fileInput.files.length > 0) {
+        fileName.textContent = "Archivo seleccionado: " + fileInput.files[0].name;
+        btn();
+      } else {
+        fileName.textContent = "";
+      }
+    });
+ 
+    function btn() {
+        if (fileName.textContent != "Archivo seleccionado: ") {
+            btn_class.classList.toggle("btn-subir");
+        }
+    }
+ 
+  </script>
+
+</body>
+</html>
