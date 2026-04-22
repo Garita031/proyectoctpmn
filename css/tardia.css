@@ -36,6 +36,7 @@ header {
     text-align: left;
     width: 130px;
 }
+
 /* Formulario principal */
 .all{
     background-color: #fff;
@@ -106,10 +107,6 @@ hr{
     font-size: 15px;
 }
 
-#date{
-    margin-left: 58px;
-}
-
 .fill-small {
     background-color: #f2eaea;
     width: 70%;
@@ -143,16 +140,6 @@ input[type="text"]:focus, input[type="date"]:focus, input[type="time"]:focus, in
     background-color: #fff;
 }
 
-input[type="file"]::file-selector-button{
-    height: 20px;
-    border-radius: 5px;
-    border: none;
-    height: 30px;
-    background-color: #7c2c2c;
-    color: #fff;
-
-}
-
 /* Tabla de motivos */
 .tablas {
     margin: 30px 0 20px 0;
@@ -176,12 +163,6 @@ input[type="file"]::file-selector-button{
     border-bottom: 1px solid #bbbbbb;
 }
 
-.pepe2 {
-    display: flex;
-    justify-content: space-between ;
-    width: fit-content;
-}
-
 .checkbox-conv {
     width: 22%;
 }
@@ -196,9 +177,15 @@ input[type="file"]::file-selector-button{
 }
 
 /* Archivo adjunto */
-input[type="file"] {
-    margin-top: 10px;
-    margin-bottom: 10px;
+
+input[type="file"]::file-selector-button{
+    height: 20px;
+    border-radius: 5px;
+    border: none;
+    height: 30px;
+    background-color: #7c2c2c;
+    color: #fff;
+
 }
 
 /* Sección de observaciones y firma */

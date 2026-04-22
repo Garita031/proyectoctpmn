@@ -2,46 +2,42 @@
     box-sizing: border-box;
     font-family: sans-serif;
 }
-
+ 
 body {
     margin: 0;
     padding: 0;
+    font-family: sans-serif;
     background-color: #f5f5f5;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
-
-label{
-    text-align: center;
-    display: flex;
-    margin: 2px;
-}
-
+ 
 .body-login{
     background-image: url('../img/login.jpg');
-    max-width: 100%;
-    position: absolute;
+    background-repeat: no-repeat;
     width: 100%;
     background-size: cover;
 }
-
-form {
+ 
+.form {
     background-color: #efe4da;
-    padding: 40px 30px;
+    padding: 10px 30px;
     border-radius: 20px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     width: 400px;
     text-align: center;
 }
-
+ 
 .logo{
+    position: relative;
     width: 55%;
+    top: 25px;
     margin: 3px;
     padding-bottom: 20px;
 }
-
+ 
 input, select {
     width: 100%;
     padding: 12px;
@@ -51,7 +47,7 @@ input, select {
     border-radius: 10px;
     font-size: 14px;
 }
-
+ 
 .ingresar {
     display: inline-block;
     margin-top: 10px;
@@ -62,9 +58,25 @@ input, select {
     border-radius: 10px;
     font-weight: bold;
     transition: background-color 0.3s;
+    border: 0;
 }
-
+ 
 .ingresar:hover {
     background-color: #6b2828;
 }
+ 
+.registrer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+ 
+.registrer input{
+    flex: 1 1 calc(50% - 10px);
+    box-sizing: border-box;
+    padding: 8px;
+}
 
+h2{
+    font-size: 20px;
+}

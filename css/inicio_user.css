@@ -23,8 +23,16 @@ header {
     padding: 15px 20px;
     border-bottom: 4px solid #7c2c2c;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
+}
+
+.header-a{
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 20px;
+    font-size: 16px;
 }
 
 .logo {
@@ -100,6 +108,7 @@ h3 {
     background-color: #5f1718;
 }
 
+
 footer {
     background-color: #1c1c1c;
     color: white;
@@ -107,7 +116,7 @@ footer {
     padding: 20px;
     font-size: 0.9em;
     border-top: 4px solid #7c2c2c;
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -126,7 +135,6 @@ footer p {
     overflow: hidden;
     z-index: 999;
     right: 0;
-    margin-top: 0.5rem;
     min-width: 160px;
 }
 
